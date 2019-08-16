@@ -1,9 +1,12 @@
 function plot_joint_motion(j)
 
-simdate = "20190719";
-simtime = "1557";  #1614
+%folder = "~/tmp/log/";
+folder = "/tmp/";
 
-joint_motion_log = get_structure(["/tmp/hmc_", simdate, simtime, "-joint-motion.log"]);
+simdate = "20190816";
+simtime = "1802";  # 1059
+
+joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
 t = joint_motion_log.time;
 

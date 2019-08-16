@@ -6,9 +6,9 @@ fclose(fid);
 
 log = load(filename);
 
-fields_raw = strsplit(title);
+fields_raw = strsplit(strtrim(title));
 
 for i = 2 : length(fields_raw)
-  fields = regexp(fields_raw{i}, "[0-9a-zA-Z-_]+", 'match');
+  fields = regexp(fields_raw{i}, "[0-9a-zA-Z-_()]+", 'match');
   data.(fields{2}) = log(:, str2num(fields{1}));
 end
