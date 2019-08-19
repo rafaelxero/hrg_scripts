@@ -3,8 +3,8 @@ function plot_joint_motion(j)
 %folder = "~/tmp/log/";
 folder = "/tmp/";
 
-simdate = "20190816";
-simtime = "1802";  # 1059
+simdate = "20190819";
+simtime = "1618";  %1536
 
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
@@ -15,6 +15,7 @@ for i = 1:53
   dqRef(:, i) = joint_motion_log.(["dqRef_", num2str(i - 1)]);
   ddqRef(:, i) = joint_motion_log.(["ddqRef_", num2str(i - 1)]);
   tauRef(:, i) = joint_motion_log.(["tauRef_", num2str(i - 1)]);
+  tauP(:, i) = joint_motion_log.(["tauP_", num2str(i - 1)]);
   qDes(:, i) = joint_motion_log.(["qDes_", num2str(i - 1)]);
   qHat(:, i) = joint_motion_log.(["qHat_", num2str(i - 1)]);
   dqHat(:, i) = joint_motion_log.(["dqHat_", num2str(i - 1)]);
@@ -34,8 +35,9 @@ plot(t, qHat(:, j) * 180/pi, 'Color', 'red', 'LineWidth', 2);
 figure(2)
 clf
 
-title(["joint torque q ", num2str(j), " ref"], 'fontsize', 30)
+title(["joint torque q ", num2str(j), " ref vs P"], 'fontsize', 30)
 hold on;
 grid on;
 
 plot(t, tauRef(:, j), 'Color', 'black', 'LineWidth', 2);
+plot(t, tauP(:, j), 'Color', 'blue', 'LineWidth', 2);
