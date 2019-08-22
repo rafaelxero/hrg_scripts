@@ -1,10 +1,10 @@
 function plot_joint_motion(j)
 
-%folder = "~/tmp/log/";
-folder = "/tmp/";
+folder = "~/tmp/log/20190821/";
+%folder = "/tmp/";
 
-simdate = "20190819";
-simtime = "1618";  %1536
+simdate = "20190821";
+simtime = "1339";
 
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
@@ -32,6 +32,8 @@ grid on;
 plot(t, qDes(:, j) * 180/pi, 'Color', 'magenta', 'LineWidth', 2);
 plot(t, qHat(:, j) * 180/pi, 'Color', 'red', 'LineWidth', 2);
 
+set(gca, "xminorgrid", "on")
+
 figure(2)
 clf
 
@@ -41,3 +43,5 @@ grid on;
 
 plot(t, tauRef(:, j), 'Color', 'black', 'LineWidth', 2);
 plot(t, tauP(:, j), 'Color', 'blue', 'LineWidth', 2);
+
+set(gca, "xminorgrid", "on")
