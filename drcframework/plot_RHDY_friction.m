@@ -32,7 +32,7 @@ for k = 1 : length(tauF)
   tauF_fil_old = tauF_fil(k);
 end
 
-figure(3)
+figure(5)
 clf
 
 title(["RHDY speed"], 'fontsize', 30)
@@ -43,7 +43,7 @@ plot(t, dqHat(:, j) * 180/pi, 'Color', 'blue', 'LineWidth', 2);
 
 set(gca, "xminorgrid", "on")
 
-figure(4)
+figure(6)
 clf
 
 title(["RHDY friction torque"], 'fontsize', 30)
@@ -55,7 +55,7 @@ plot(t, tauF_fil, 'Color', 'red', 'LineWidth', 2);
 
 set(gca, "xminorgrid", "on")
 
-figure(5)
+figure(7)
 clf
 
 title(["RHDY acceleration"], 'fontsize', 30)
