@@ -1,10 +1,7 @@
-function plot_joint_motion(j)
+function plot_joint_motion(j, simdate, simtime)
 
-simdate = "20190827";
-simtime = "2302";
-
-%folder = ["~/tmp/log/", simdate, "/"];
-folder = "/tmp/";
+folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+%folder = "/tmp/";
 
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
