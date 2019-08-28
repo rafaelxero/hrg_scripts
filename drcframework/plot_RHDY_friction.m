@@ -5,11 +5,11 @@ j = 26;
 % The mass of the hand is 2.6694 kg
 m = 2.6694;
 
-folder = "~/tmp/log/20190821/";
-%folder = "/tmp/";
+simdate = "20190825";
+simtime = "0022";
 
-simdate = "20190821";
-simtime = "1339";
+%folder = "~/tmp/log/20190821/";
+folder = "/tmp/";
 
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 

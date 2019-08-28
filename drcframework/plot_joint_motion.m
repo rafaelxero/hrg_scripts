@@ -1,7 +1,7 @@
 function plot_joint_motion(j)
 
-simdate = "20190826";
-simtime = "1213";  # 1524 1518 1517
+simdate = "20190827";
+simtime = "2302";
 
 %folder = ["~/tmp/log/", simdate, "/"];
 folder = "/tmp/";
@@ -21,6 +21,7 @@ for i = 1:53
   ddqRef(:, i) = joint_motion_log.(["ddqRef_", num2str(i - 1)]);
   tauRef(:, i) = joint_motion_log.(["tauRef_", num2str(i - 1)]);
   tauComp(:, i) = joint_motion_log.(["tauComp_", num2str(i - 1)]);
+  tauFric(:, i) = joint_motion_log.(["tauFric_", num2str(i - 1)]);
   tauP(:, i) = joint_motion_log.(["tauP_", num2str(i - 1)]);
   qDes(:, i) = joint_motion_log.(["qDes_", num2str(i - 1)]);
   qHat(:, i) = joint_motion_log.(["qHat_", num2str(i - 1)]);
@@ -48,6 +49,7 @@ hold on;
 grid on;
 
 plot(t, tauComp(:, j), 'Color', 'magenta', 'LineWidth', 2);
+plot(t, tauFric(:, j), 'color', 'red', 'LineWidth', 2);
 plot(t, tauP(:, j), 'Color', 'blue', 'LineWidth', 2);
 plot(t, tauRef(:, j), 'Color', 'black', 'LineWidth', 2);
 
