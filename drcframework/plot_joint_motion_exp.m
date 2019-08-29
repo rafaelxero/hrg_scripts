@@ -1,4 +1,4 @@
-function plot_joint_motion(j, simdate, simtime)
+function plot_joint_motion_exp(j, simdate, simtime)
 
 folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
 %folder = "/tmp/";

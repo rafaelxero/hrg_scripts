@@ -15,8 +15,8 @@ for i = 1:3
 end
 
 for i = 1:3
-  RHrpy_des(:, i) = task_space_motion_log.(["body-des_R_", rot_comp{i}]);
-  RHrpy_hat(:, i) = task_space_motion_log.(["body-hat_R_", rot_comp{i}]);
+  RHrpy_des(:, i) = task_space_motion_log.(["rhand-des_R_", rot_comp{i}]);
+  RHrpy_hat(:, i) = task_space_motion_log.(["rhand-hat_R_", rot_comp{i}]);
 end
 
 figure(1)
