@@ -30,8 +30,8 @@ for j = 1:3
   hold on;
   grid on;
 
-  plot(t, RHxyz_des(:, j),  'Color', 'magenta',   'LineWidth', 2);
-  plot(t, RHxyz_hat(:, j),  'Color', 'red', 'LineWidth', 2);
+  plot(t, RHxyz_des(:, j),  'Color', 'magenta', 'LineWidth', 2);
+  plot(t, RHxyz_hat(:, j),  'Color', 'red',     'LineWidth', 2);
 
   h = get(gcf, "currentaxes");
   set(h, "fontsize", 30);
@@ -42,8 +42,8 @@ for j = 1:3
   hold on;
   grid on;
 
-  plot(t, RHrpy_des(:, j),  'Color', 'magenta',   'LineWidth', 2);
-  plot(t, RHrpy_hat(:, j),  'Color', 'red', 'LineWidth', 2);
+  plot(t, RHrpy_des(:, j),  'Color', 'magenta', 'LineWidth', 2);
+  plot(t, RHrpy_hat(:, j),  'Color', 'red',     'LineWidth', 2);
 
   h = get(gcf, "currentaxes");
   set(h, "fontsize", 30);
