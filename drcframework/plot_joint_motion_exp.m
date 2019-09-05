@@ -3,9 +3,32 @@ function plot_joint_motion_exp(j, simdate, simtime)
 folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
 %folder = "/tmp/";
 
+car_comp = ["x", "y", "z"];
+
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
 t = joint_motion_log.time;
+
+for i = 1:3
+  waistPosDes(:, i) = joint_motion_log.(["waistDes_P", car_comp(i)]);
+  waistLinVelDes(:, i) = joint_motion_log.(["waistDes_V", car_comp(i)]);
+  waistLinAccDes(:, i) = joint_motion_log.(["waistDes_Vdot", car_comp(i)]);
+  waistRotDes(:, i) = joint_motion_log.(["waistDes_R", car_comp(i)]);
+  waistAngVelDes(:, i) = joint_motion_log.(["waistDes_W", car_comp(i)]);
+  waistAngAccDes(:, i) = joint_motion_log.(["waistDes_Wdot", car_comp(i)]);
+  waistPosHat(:, i) = joint_motion_log.(["waistHat_P", car_comp(i)]);
+  waistLinVelHat(:, i) = joint_motion_log.(["waistHat_V", car_comp(i)]);
+  waistLinAccHat(:, i) = joint_motion_log.(["waistHat_Vdot", car_comp(i)]);
+  waistRotHat(:, i) = joint_motion_log.(["waistHat_R", car_comp(i)]);
+  waistAngVelHat(:, i) = joint_motion_log.(["waistHat_W", car_comp(i)]);
+  waistAngAccHat(:, i) = joint_motion_log.(["waistHat_Wdot", car_comp(i)]);
+  waistPosRef(:, i) = joint_motion_log.(["waistRef_P", car_comp(i)]);
+  waistLinVelRef(:, i) = joint_motion_log.(["waistRef_V", car_comp(i)]);
+  waistLinAccRef(:, i) = joint_motion_log.(["waistRef_Vdot", car_comp(i)]);
+  waistRotRef(:, i) = joint_motion_log.(["waistRef_R", car_comp(i)]);
+  waistAngVelRef(:, i) = joint_motion_log.(["waistRef_W", car_comp(i)]);
+  waistAngAccRef(:, i) = joint_motion_log.(["waistRef_Wdot", car_comp(i)]);
+end
 
 for i = 1:6
   waistComp(:, i) = joint_motion_log.(["waistWrenchComp_", num2str(i - 1)]);
