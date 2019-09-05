@@ -1,9 +1,10 @@
 function plot_joint_motion_exp(j, simdate, simtime)
 
-folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
-%folder = "/tmp/";
+%folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+folder = "/tmp/";
 
 car_comp = ["x", "y", "z"];
+rot_comp = {"Rpy", "rPy", "rpY"};
 
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
@@ -13,19 +14,19 @@ for i = 1:3
   waistPosDes(:, i) = joint_motion_log.(["waistDes_P", car_comp(i)]);
   waistLinVelDes(:, i) = joint_motion_log.(["waistDes_V", car_comp(i)]);
   waistLinAccDes(:, i) = joint_motion_log.(["waistDes_Vdot", car_comp(i)]);
-  waistRotDes(:, i) = joint_motion_log.(["waistDes_R", car_comp(i)]);
+  waistRotDes(:, i) = joint_motion_log.(["waistDes_R_", rot_comp{i}]);
   waistAngVelDes(:, i) = joint_motion_log.(["waistDes_W", car_comp(i)]);
   waistAngAccDes(:, i) = joint_motion_log.(["waistDes_Wdot", car_comp(i)]);
   waistPosHat(:, i) = joint_motion_log.(["waistHat_P", car_comp(i)]);
   waistLinVelHat(:, i) = joint_motion_log.(["waistHat_V", car_comp(i)]);
   waistLinAccHat(:, i) = joint_motion_log.(["waistHat_Vdot", car_comp(i)]);
-  waistRotHat(:, i) = joint_motion_log.(["waistHat_R", car_comp(i)]);
+  waistRotHat(:, i) = joint_motion_log.(["waistHat_R_", rot_comp{i}]);
   waistAngVelHat(:, i) = joint_motion_log.(["waistHat_W", car_comp(i)]);
   waistAngAccHat(:, i) = joint_motion_log.(["waistHat_Wdot", car_comp(i)]);
   waistPosRef(:, i) = joint_motion_log.(["waistRef_P", car_comp(i)]);
   waistLinVelRef(:, i) = joint_motion_log.(["waistRef_V", car_comp(i)]);
   waistLinAccRef(:, i) = joint_motion_log.(["waistRef_Vdot", car_comp(i)]);
-  waistRotRef(:, i) = joint_motion_log.(["waistRef_R", car_comp(i)]);
+  waistRotRef(:, i) = joint_motion_log.(["waistRef_R_", rot_comp{i}]);
   waistAngVelRef(:, i) = joint_motion_log.(["waistRef_W", car_comp(i)]);
   waistAngAccRef(:, i) = joint_motion_log.(["waistRef_Wdot", car_comp(i)]);
 end
@@ -97,4 +98,16 @@ grid on;
 for i = 4:6
   plot(t, waistComp(:, i), '--', 'Color', eye(3)(:, i - 3), 'LineWidth', 2);
   plot(t, waistP(:, i), 'Color', eye(3)(:, i - 3), 'LineWidth', 2);
+end
+
+figure(5)
+clf
+
+title(["waist position des vs hat"], "fontSize", 30);
+hold on;
+grid on;
+
+for i = 1:3
+  plot(t, waistPosDes(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistPosHat(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
