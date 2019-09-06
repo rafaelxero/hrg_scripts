@@ -11,12 +11,6 @@ joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-moti
 t = joint_motion_log.time;
 
 for i = 1:3
-  waistPosDes(:, i) = joint_motion_log.(["waistDes_P", car_comp(i)]);
-  waistLinVelDes(:, i) = joint_motion_log.(["waistDes_V", car_comp(i)]);
-  waistLinAccDes(:, i) = joint_motion_log.(["waistDes_Vdot", car_comp(i)]);
-  waistRotDes(:, i) = joint_motion_log.(["waistDes_R_", rot_comp{i}]);
-  waistAngVelDes(:, i) = joint_motion_log.(["waistDes_W", car_comp(i)]);
-  waistAngAccDes(:, i) = joint_motion_log.(["waistDes_Wdot", car_comp(i)]);
   waistPosHat(:, i) = joint_motion_log.(["waistHat_P", car_comp(i)]);
   waistLinVelHat(:, i) = joint_motion_log.(["waistHat_V", car_comp(i)]);
   waistLinAccHat(:, i) = joint_motion_log.(["waistHat_Vdot", car_comp(i)]);
@@ -108,6 +102,5 @@ hold on;
 grid on;
 
 for i = 1:3
-  plot(t, waistPosDes(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
   plot(t, waistPosHat(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
