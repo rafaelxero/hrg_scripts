@@ -1,7 +1,7 @@
 function plot_joint_motion_exp(j, simdate, simtime)
 
-%folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
-folder = "/tmp/";
+folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+%folder = "/tmp/";
 
 car_comp = ["x", "y", "z"];
 rot_comp = {"Rpy", "rPy", "rpY"};
@@ -97,10 +97,35 @@ end
 figure(5)
 clf
 
-title(["waist position des vs hat"], "fontSize", 30);
+title(["waist position ref vs hat"], "fontSize", 30);
 hold on;
 grid on;
 
 for i = 1:3
-  plot(t, waistPosHat(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistPosRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistPosHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
+end
+
+figure(6)
+clf
+
+title(["waist linear velocity ref vs hat"], "fontSize", 30);
+hold on;
+grid on;
+
+for i = 1:3
+  plot(t, waistLinVelRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistLinVelHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
+end
+
+figure(7)
+clf
+
+title(["waist linear acceleration ref vs hat"], "fontSize", 30);
+hold on;
+grid on;
+
+for i = 1:3
+  plot(t, waistLinAccRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistLinAccHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
