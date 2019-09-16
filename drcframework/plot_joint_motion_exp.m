@@ -1,8 +1,11 @@
-function plot_joint_motion_exp(j, simdate, simtime)
+function plot_joint_motion_exp(j, exp, simdate, simtime)
 
-folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
-%folder = "/tmp/";
-
+if (exp == 1)
+  folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+else
+  folder = "/tmp/";
+end
+  
 car_comp = ["x", "y", "z"];
 rot_comp = {"Rpy", "rPy", "rpY"};
 
@@ -56,6 +59,9 @@ plot(t, qHat(:, j) * 180/pi, 'Color', 'red', 'LineWidth', 2);
 
 set(gca, "xminorgrid", "on")
 
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
+
 figure(2)
 clf
 
@@ -70,6 +76,9 @@ plot(t, tauRef(:, j), 'Color', 'black', 'LineWidth', 2);
 
 set(gca, "xminorgrid", "on")
 
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
+
 figure(3)
 clf
 
@@ -81,6 +90,9 @@ for i = 1:3
   plot(t, waistComp(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
   plot(t, waistP(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
+
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
 
 figure(4)
 clf
@@ -94,6 +106,9 @@ for i = 4:6
   plot(t, waistP(:, i), 'Color', eye(3)(:, i - 3), 'LineWidth', 2);
 end
 
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
+
 figure(5)
 clf
 
@@ -105,6 +120,9 @@ for i = 1:3
   plot(t, waistPosRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
   plot(t, waistPosHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
+
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
 
 figure(6)
 clf
@@ -118,6 +136,9 @@ for i = 1:3
   plot(t, waistLinVelHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
 
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
+
 figure(7)
 clf
 
@@ -129,3 +150,6 @@ for i = 1:3
   plot(t, waistLinAccRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
   plot(t, waistLinAccHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
 end
+
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
