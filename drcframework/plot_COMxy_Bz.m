@@ -11,8 +11,8 @@ t = task_space_motion_log.time;
 
 for i = 1:3
 
-  comxyz_des(:, i) = task_space_motion_log.(["com-p-des_P", car_comp(i)]);
-  comxyz_hat(:, i) = task_space_motion_log.(["com-p-hat_P", car_comp(i)]);
+  comxyz_des(:, i) = task_space_motion_log.(["com-des2_P", car_comp(i)]);
+  comxyz_hat(:, i) = task_space_motion_log.(["com-hat2_P", car_comp(i)]);
 
   Bxyz_des(:, i) = task_space_motion_log.(["body-des_P", car_comp(i)]);
   Bxyz_hat(:, i) = task_space_motion_log.(["body-hat_P", car_comp(i)]);
