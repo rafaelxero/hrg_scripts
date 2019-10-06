@@ -153,3 +153,33 @@ end
 
 h = get(gcf, "currentaxes");
 set(h, "fontsize", 25);
+
+figure(8)
+clf
+
+title(["waist angular velocity ref vs hat"], "fontSize", 30);
+hold on;
+grid on;
+
+for i = 1:3
+  plot(t, waistAngVelRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistAngVelHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
+end
+
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
+
+figure(9)
+clf
+
+title(["waist angular acceleration ref vs hat"], "fontSize", 30);
+hold on;
+grid on;
+
+for i = 1:3
+  plot(t, waistAngAccRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistAngAccHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
+end
+
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
