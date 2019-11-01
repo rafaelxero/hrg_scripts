@@ -1,12 +1,14 @@
-function data = get_solver_data(exp, simdate, simtime)
+%function data = get_solver_data(exp, simdate, simtime)
+%
+%if (exp == 1)
+%  folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+%else
+%  folder = "/tmp/";
+%end
+%
+%filename = [folder, "hmc_", simdate, simtime, "-solver-data.log"]
 
-if (exp == 1)
-  folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
-else
-  folder = "/tmp/";
-end
-
-filename = [folder, "hmc_", simdate, simtime, "-solver-data.log"]
+filename = "example.log";
 
 fid = fopen(filename);
 
