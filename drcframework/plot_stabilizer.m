@@ -80,7 +80,7 @@ for j = 1:3
   plot(t, zmp_des(:, j), 'Color', 'magenta', 'LineWidth', 2);
   plot(t, zmp_mod(:, j), 'Color', 'green',   'LineWidth', 2);
   plot(t, zmp_ref(:, j), 'Color', 'blue',    'LineWidth', 2);
-  plot(t, zmp_cal(:, j), 'Color', 'black',   'LineWidth', 2);
+  #plot(t, zmp_cal(:, j), 'Color', 'black',   'LineWidth', 2);
   plot(t, zmp_hat(:, j), 'Color', 'red',     'LineWidth', 2);
 
 end
