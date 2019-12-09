@@ -22,9 +22,9 @@ for i = 1:8
     coriolisMat(:, 8 * (j - 1) + i)  = dynamics_data_log.(["coriolisMat_", num2str(j - 1), num2str(i - 1)]);
   end
   
- end
- 
- for k = 1:length(time)
+end
+
+for k = 1:length(time)
  
   data(k).time = time(k);
   
