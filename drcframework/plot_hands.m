@@ -1,6 +1,10 @@
-function plot_hands(simdate, simtime)
+function plot_hands(exp, simdate, simtime)
 
-folder = "/tmp/";
+if (exp == 1)
+  folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+else
+  folder = "/tmp/";
+end
 
 car_comp = ["x", "y", "z"];
 rot_comp = {"Rpy", "rPy", "rpY"};

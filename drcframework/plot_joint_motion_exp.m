@@ -12,6 +12,7 @@ rot_comp = {"Rpy", "rPy", "rpY"};
 joint_motion_log = get_structure([folder, "hmc_", simdate, simtime, "-joint-motion.log"]);
 
 t = joint_motion_log.time;
+%t = 0 : 0.005 : (t(end) - t(1));
 
 for i = 1:3
   waistPosHat(:, i) = joint_motion_log.(["waistHat_P", car_comp(i)]);
@@ -41,6 +42,7 @@ for i = 1:53
   tauComp(:, i) = joint_motion_log.(["tauComp_", num2str(i - 1)]);
   tauFric(:, i) = joint_motion_log.(["tauFric_", num2str(i - 1)]);
   tauP(:, i) = joint_motion_log.(["tauP_", num2str(i - 1)]);
+  tauHat(:, i) = joint_motion_log.(["tauHat_", num2str(i - 1)]);
   qDes(:, i) = joint_motion_log.(["qDes_", num2str(i - 1)]);
   qHat(:, i) = joint_motion_log.(["qHat_", num2str(i - 1)]);
   dqHat(:, i) = joint_motion_log.(["dqHat_", num2str(i - 1)]);
@@ -73,6 +75,7 @@ plot(t, tauComp(:, j), 'Color', 'magenta', 'LineWidth', 2);
 plot(t, tauFric(:, j), 'color', 'red', 'LineWidth', 2);
 plot(t, tauP(:, j), 'Color', 'blue', 'LineWidth', 2);
 plot(t, tauRef(:, j), 'Color', 'black', 'LineWidth', 2);
+plot(t, tauHat(:, j), 'Color', 'green', 'LineWidth', 2);
 
 set(gca, "xminorgrid", "on")
 

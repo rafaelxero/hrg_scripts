@@ -1,10 +1,11 @@
 function plot_time_analysis()
 
-simdate = "20190731";
-simtime = "1621";
+simdate = "20191121";
+simtime = "0943";
 
 #time_log = get_structure(["/tmp/hmc_", simdate, simtime, "-time.log"]);
-elapsed_times_log = get_structure(["/tmp/hmc_", simdate, simtime, "-elapsed-times.log"]);
+#elapsed_times_log = get_structure(["/tmp/hmc_", simdate, simtime, "-elapsed-times.log"]);
+elapsed_times_log = get_structure(["~/src/rcisneros/hrg/logs/experiments/", simdate, simtime, "-elapsed-times.log"]);
 
 t = elapsed_times_log.time;
 
