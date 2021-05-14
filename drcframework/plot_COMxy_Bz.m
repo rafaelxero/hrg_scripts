@@ -1,3 +1,5 @@
+% Plots the zmp-based CoM
+
 function plot_COMxy_Bz(simdate, simtime)
 
 folder = "/tmp/";

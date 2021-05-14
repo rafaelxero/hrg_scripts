@@ -34,12 +34,12 @@ for i = 1:3
   %icp(:, i) = stabilizer_log.(["icp_", car_comp(i)]);
   rfoot_force_cal(:, i) = stabilizer_log.(["rfoot-force-cal_", car_comp(i)]);
   lfoot_force_cal(:, i) = stabilizer_log.(["lfoot-force-cal_", car_comp(i)]);
-  %rhand_force_cal(:, i) = stabilizer_log.(["rhand-force-cal_", car_comp(i)]);
-  %lhand_force_cal(:, i) = stabilizer_log.(["lhand-force-cal_", car_comp(i)]);
+  rhand_force_cal(:, i) = stabilizer_log.(["rhand-force-cal_", car_comp(i)]);
+  lhand_force_cal(:, i) = stabilizer_log.(["lhand-force-cal_", car_comp(i)]);
   rfoot_moment_cal(:, i) = stabilizer_log.(["rfoot-moment-cal_", car_comp(i)]);
   lfoot_moment_cal(:, i) = stabilizer_log.(["lfoot-moment-cal_", car_comp(i)]);
-  %rhand_moment_cal(:, i) = stabilizer_log.(["rhand-moment-cal_", car_comp(i)]);
-  %lhand_moment_cal(:, i) = stabilizer_log.(["lhand-moment-cal_", car_comp(i)]);
+  rhand_moment_cal(:, i) = stabilizer_log.(["rhand-moment-cal_", car_comp(i)]);
+  lhand_moment_cal(:, i) = stabilizer_log.(["lhand-moment-cal_", car_comp(i)]);
   
 end
 
@@ -106,7 +106,7 @@ end
 %
 %  subplot(3, 1, j);
 %
-%  title(["com ", car_comp(j) , " balerr vs cp", car_comp(j), " err"], 'fontsize', 30)
+%  title(["com ", car_comp(j) , " bal err vs cp ", car_comp(j), " err"], 'fontsize', 30)
 %    
 %  hold on;
 %  grid on;
@@ -115,7 +115,7 @@ end
 %  plot(t, cp_err(:, j), 'Color', 'green', 'LineWidth', 2);
 %
 %end
-
+%
 %figure(5)
 %clf
 %
@@ -123,7 +123,7 @@ end
 %
 %  subplot(3, 1, j);
 %
-%  title(["zmp ", car_comp(j), " err vs balerr"], 'fontsize', 30)
+%  title(["zmp ", car_comp(j), " err vs bal err"], 'fontsize', 30)
 %    
 %  hold on;
 %  grid on;
@@ -132,7 +132,7 @@ end
 %  plot(t, zmp_balerr(:, j), 'Color', 'magenta', 'LineWidth', 2);
 %
 %end
-
+%
 %figure(6)
 %clf
 %
@@ -140,7 +140,7 @@ end
 %
 %  subplot(3, 1, j);
 %
-%  title(["zmp ", car_comp(j), " ideal vs repcmp"], 'fontsize', 30)
+%  title(["zmp ", car_comp(j), " ideal vs rep cmp"], 'fontsize', 30)
 %    
 %  hold on;
 %  grid on;
@@ -149,7 +149,7 @@ end
 %  plot(t, zmp_repcmp(:, j), 'Color', 'magenta', 'LineWidth', 2);
 %
 %end
-
+%
 %figure(7)
 %clf
 %
@@ -157,7 +157,7 @@ end
 %
 %  subplot(3, 1, j);
 %
-%  title(["zmp ", car_comp(j), " ctrlerr vs planerr"], 'fontsize', 30)
+%  title(["zmp ", car_comp(j), " ctrlerr vs plan err"], 'fontsize', 30)
 %    
 %  hold on;
 %  grid on;
@@ -230,3 +230,35 @@ end
 %  plot(t, totalMomentZMP_cal(:, j), 'Color', 'black', 'LineWidth', 2);
 %
 %end
+
+figure(12)
+clf
+
+for j = 1:3
+
+  subplot(3, 1, j);
+
+  title(["rhand force ", car_comp(j), " cal"], 'fontsize', 30)
+    
+  hold on;
+  grid on;
+
+  plot(t, rfoot_force_cal(:, j), 'Color', 'black', 'LineWidth', 2);
+
+end
+
+figure(13)
+clf
+
+for j = 1:3
+
+  subplot(3, 1, j);
+
+  title(["rhand moment ", car_comp(j), " cal"], 'fontsize', 30)
+    
+  hold on;
+  grid on;
+
+  plot(t, rfoot_moment_cal(:, j), 'Color', 'black', 'LineWidth', 2);
+
+end

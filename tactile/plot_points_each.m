@@ -3,10 +3,18 @@ function plot_points_each(ini_time, foot, data_raw, data_hull, data_proc)
 figure(1)
 fig = gcf;
 
-for k = 1 : size(data_proc, 2)
-  if (abs(ini_time - data_proc(k).time) < 1E-3)
-    break;
+if (ini_time == 0)
+
+  k = 1;
+
+else
+  
+  for k = 1 : size(data_proc, 2)
+    if (abs(ini_time - data_proc(k).time) < 1E-3)
+      break;
+    end
   end
+  
 end
 
 if strcmp(foot, "left")

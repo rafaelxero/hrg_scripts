@@ -38,6 +38,7 @@ for i = 1:53
   qRef(:, i) = joint_motion_log.(["qRef_", num2str(i - 1)]);
   dqRef(:, i) = joint_motion_log.(["dqRef_", num2str(i - 1)]);
   ddqRef(:, i) = joint_motion_log.(["ddqRef_", num2str(i - 1)]);
+  torqueMode(:, i) = joint_motion_log.(["torqueMode_", num2str(i - 1)]);
   tauRef(:, i) = joint_motion_log.(["tauRef_", num2str(i - 1)]);
   tauComp(:, i) = joint_motion_log.(["tauComp_", num2str(i - 1)]);
   tauFric(:, i) = joint_motion_log.(["tauFric_", num2str(i - 1)]);
@@ -71,11 +72,12 @@ title(["joint torque q ", num2str(j), " comp vs P vs ref"], 'fontsize', 30)
 hold on;
 grid on;
 
+plot(t, torqueMode(:, j), 'Color', 'cyan', 'LineWidth', 2);
+plot(t, tauHat(:, j), 'Color', 'green', 'LineWidth', 2);
 plot(t, tauComp(:, j), 'Color', 'magenta', 'LineWidth', 2);
-plot(t, tauFric(:, j), 'color', 'red', 'LineWidth', 2);
+%plot(t, tauFric(:, j), 'color', 'red', 'LineWidth', 2);
 plot(t, tauP(:, j), 'Color', 'blue', 'LineWidth', 2);
 plot(t, tauRef(:, j), 'Color', 'black', 'LineWidth', 2);
-plot(t, tauHat(:, j), 'Color', 'green', 'LineWidth', 2);
 
 set(gca, "xminorgrid", "on")
 
@@ -130,6 +132,21 @@ set(h, "fontsize", 25);
 figure(6)
 clf
 
+title(["waist orientation ref vs hat"], "fontSize", 30);
+hold on;
+grid on;
+
+for i = 1:3
+  plot(t, waistRotRef(:, i), 'Color', eye(3)(:, i), 'LineWidth', 2);
+  plot(t, waistRotHat(:, i), '--', 'Color', eye(3)(:, i), 'LineWidth', 2);
+end
+
+h = get(gcf, "currentaxes");
+set(h, "fontsize", 25);
+
+figure(7)
+clf
+
 title(["waist linear velocity ref vs hat"], "fontSize", 30);
 hold on;
 grid on;
@@ -142,7 +159,7 @@ end
 h = get(gcf, "currentaxes");
 set(h, "fontsize", 25);
 
-figure(7)
+figure(8)
 clf
 
 title(["waist linear acceleration ref vs hat"], "fontSize", 30);
@@ -157,7 +174,7 @@ end
 h = get(gcf, "currentaxes");
 set(h, "fontsize", 25);
 
-figure(8)
+figure(9)
 clf
 
 title(["waist angular velocity ref vs hat"], "fontSize", 30);
@@ -172,7 +189,7 @@ end
 h = get(gcf, "currentaxes");
 set(h, "fontsize", 25);
 
-figure(9)
+figure(10)
 clf
 
 title(["waist angular acceleration ref vs hat"], "fontSize", 30);
