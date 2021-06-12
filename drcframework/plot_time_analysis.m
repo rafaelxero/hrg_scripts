@@ -1,11 +1,17 @@
-function plot_time_analysis()
+function plot_time_analysis(exp, simdate, simtime)
 
-simdate = "20191121";
-simtime = "0943";
+if (exp == 1)
+  folder = ["~/src/rcisneros/hrg/logs/experiments/", simdate, "/"];
+else
+  folder = "/tmp/";
+end
+
+%simdate = "20191121";
+%simtime = "0943";
 
 #time_log = get_structure(["/tmp/hmc_", simdate, simtime, "-time.log"]);
 #elapsed_times_log = get_structure(["/tmp/hmc_", simdate, simtime, "-elapsed-times.log"]);
-elapsed_times_log = get_structure(["~/src/rcisneros/hrg/logs/experiments/", simdate, simtime, "-elapsed-times.log"]);
+elapsed_times_log = get_structure([folder, 'hmc_', simdate, simtime, "-elapsed-times.log"]);
 
 t = elapsed_times_log.time;
 
